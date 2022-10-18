@@ -74,7 +74,7 @@ public class MarbleSolitaireTextViewTest {
       new MarbleSolitaireTextView(null);
       fail("Did not throw exception when passed invalid empty cell");
     } catch (IllegalArgumentException error) {
-      assertEquals("The model cannot be null", error.getMessage());
+      assertEquals("The model and appendable cannot be null", error.getMessage());
     }
   }
 
