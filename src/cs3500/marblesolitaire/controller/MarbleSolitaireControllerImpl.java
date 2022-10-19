@@ -39,6 +39,7 @@ public class MarbleSolitaireControllerImpl implements MarbleSolitaireController 
 
   @Override
   public void playGame() throws IllegalStateException {
+    // TODO: Extract to helper methods
     Scanner scanner = new Scanner(this.input);
     while (!this.model.isGameOver()) {
       this.renderBoardISE();
