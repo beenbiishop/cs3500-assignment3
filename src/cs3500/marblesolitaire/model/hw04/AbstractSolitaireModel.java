@@ -82,7 +82,7 @@ public abstract class AbstractSolitaireModel implements MarbleSolitaireModel {
    * @param armThickness the board's arm thickness to validate against
    * @return true if the slot position is valid, false otherwise
    */
-  private boolean isValidSlot(int row, int col, int armThickness) {
+  protected boolean isValidSlot(int row, int col, int armThickness) {
     int armFirstRowCol = armThickness - 1;
     int armLastRowCol = armThickness * 2 - 2;
     int boardSize = armThickness * 3 - 2;
@@ -97,7 +97,7 @@ public abstract class AbstractSolitaireModel implements MarbleSolitaireModel {
    *
    * @see AbstractSolitaireModel#isValidSlot(int, int, int)
    */
-  private boolean isValidSlot(int row, int col) {
+  protected boolean isValidSlot(int row, int col) {
     return isValidSlot(row, col, this.armThickness);
   }
 
