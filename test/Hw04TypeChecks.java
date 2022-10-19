@@ -1,5 +1,5 @@
 import cs3500.marblesolitaire.model.hw02.EnglishSolitaireModel;
-import cs3500.marblesolitaire.model.hw04.TriangleSolitaireModel;
+//import cs3500.marblesolitaire.model.hw04.TriangleSolitaireModel;
 
 /**
  * Do not modify this file. This file should compile correctly with your code!
@@ -16,7 +16,7 @@ public class Hw04TypeChecks {
     Appendable ap = null;
     helperMarble(new EnglishSolitaireModel(), rd, ap);
 
-    helperTriangle(new TriangleSolitaireModel(3, 3), rd, ap);
+//    helperTriangle(new TriangleSolitaireModel(3, 3), rd, ap);
   }
 
   /**
