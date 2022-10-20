@@ -128,6 +128,7 @@ public abstract class AbstractSolitaireModel implements MarbleSolitaireModel {
     return this.board[row][col];
   }
 
+
   /**
    * Return the number of marbles currently on the board.
    *

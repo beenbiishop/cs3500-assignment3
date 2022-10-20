@@ -37,7 +37,7 @@ public class EuropeanSolitaireModel extends AbstractSolitaireModel {
    * @throws IllegalArgumentException if the side length is not a positive odd number
    */
   public EuropeanSolitaireModel(int sideLength) throws IllegalArgumentException {
-    super(sideLength, (sideLength - 1) / 2, (sideLength - 1) / 2);
+    super(sideLength, (sideLength * 3 - 2) / 2, (sideLength * 3 - 2) / 2);
   }
 
   /**
@@ -66,35 +66,35 @@ public class EuropeanSolitaireModel extends AbstractSolitaireModel {
     super(sideLength, sRow, sCol);
   }
 
-//  /**
-//   * Returns whether a move from a given slot position to a given slot position is valid.
-//   *
-//   * <p>A move is valid when:
-//   * <ul>
-//   *   <li>The from slot is valid and on the board</li>
-//   *   <li>The to slot is valid on the board</li>
-//   *   <li>The from slot has a slot state of marble</li>
-//   *   <li>The to slot has a slot state of empty</li>
-//   *   <li>The from slot and the to slot are exactly two slots apart in one direction</li>
-//   *   <li>The slot in between the from slot and to slot has a state of marble</li>
-//   * </ul></p>
-//   *
-//   * @param fromRow the row number of the slot to move from (starts at 0)
-//   * @param fromCol the column number of the slot to move from (starts at 0)
-//   * @param toRow   the row number of the slot to move to (starts at 0)
-//   * @param toCol   the column number of the slot to move to (starts at 0)
-//   * @return true if the given move is valid, false otherwise
-//   */
-//  private boolean isValidMove(int fromRow, int fromCol, int toRow, int toCol) {
-//    int horDiff = Math.abs(fromRow - toRow);
-//    int verDiff = Math.abs(fromCol - toCol);
-//    int midRow = (fromRow + toRow) / 2;
-//    int midCol = (fromCol + toCol) / 2;
-//    return this.isValidSlot(fromRow, fromCol) && this.isValidSlot(toRow, toCol)
-//        && this.getSlotAt(fromRow, fromCol) == SlotState.Marble
-//        && this.getSlotAt(toRow, toCol) == SlotState.Empty && ((horDiff == 2 && verDiff == 0) ^ (
-//        horDiff == 0 && verDiff == 2)) && this.getSlotAt(midRow, midCol) == SlotState.Marble;
-//  }
+  /**
+   * Returns whether a move from a given slot position to a given slot position is valid.
+   *
+   * <p>A move is valid when:
+   * <ul>
+   *   <li>The from slot is valid and on the board</li>
+   *   <li>The to slot is valid on the board</li>
+   *   <li>The from slot has a slot state of marble</li>
+   *   <li>The to slot has a slot state of empty</li>
+   *   <li>The from slot and the to slot are exactly two slots apart in one direction</li>
+   *   <li>The slot in between the from slot and to slot has a state of marble</li>
+   * </ul></p>
+   *
+   * @param fromRow the row number of the slot to move from (starts at 0)
+   * @param fromCol the column number of the slot to move from (starts at 0)
+   * @param toRow   the row number of the slot to move to (starts at 0)
+   * @param toCol   the column number of the slot to move to (starts at 0)
+   * @return true if the given move is valid, false otherwise
+   */
+  private boolean isValidMove(int fromRow, int fromCol, int toRow, int toCol) {
+    int horDiff = Math.abs(fromRow - toRow);
+    int verDiff = Math.abs(fromCol - toCol);
+    int midRow = (fromRow + toRow) / 2;
+    int midCol = (fromCol + toCol) / 2;
+    return this.isValidSlot(fromRow, fromCol) && this.isValidSlot(toRow, toCol)
+        && this.getSlotAt(fromRow, fromCol) == SlotState.Marble
+        && this.getSlotAt(toRow, toCol) == SlotState.Empty && ((horDiff == 2 && verDiff == 0) ^ (
+        horDiff == 0 && verDiff == 2)) && this.getSlotAt(midRow, midCol) == SlotState.Marble;
+  }
 
   /**
    * Returns whether the given slot position is valid based on the given arm thickness.
@@ -106,9 +106,6 @@ public class EuropeanSolitaireModel extends AbstractSolitaireModel {
    */
   @Override
   protected boolean isValidSlot(int row, int col, int sideLength) {
-//    int armFirstRowCol = sideLength - 1;
-//    int armLastRowCol = sideLength * 2 - 2;
-//    int boardSize = sideLength * 3 - 2;
     int a = ((sideLength - 1) / 2) + sideLength - 1;
     int b = sideLength / 2;
     return Math.abs(a - col) + Math.abs(a - row) <= a + b;
