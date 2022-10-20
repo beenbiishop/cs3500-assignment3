@@ -172,7 +172,7 @@ public abstract class AbstractSolitaireModel implements MarbleSolitaireModel {
     int midRow = (fromRow + toRow) / 2;
     int midCol = (fromCol + toCol) / 2;
     return this.isValidSlot(fromRow, fromCol) && this.isValidSlot(toRow, toCol)
-        && this.getSlotAt(fromRow, fromCol) == SlotState.Marble
+        && this.isValidSlot(midRow, midCol) && this.getSlotAt(fromRow, fromCol) == SlotState.Marble
         && this.getSlotAt(toRow, toCol) == SlotState.Empty && ((horDiff == 2 && verDiff == 0) ^ (
         horDiff == 0 && verDiff == 2)) && this.getSlotAt(midRow, midCol) == SlotState.Marble;
   }

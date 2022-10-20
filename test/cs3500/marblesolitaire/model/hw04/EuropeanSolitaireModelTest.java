@@ -13,6 +13,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Tests for the EuropeanSolitaireModel class and its methods.
+ */
 public class EuropeanSolitaireModelTest {
 
   MarbleSolitaireModel noParams;
@@ -21,7 +24,7 @@ public class EuropeanSolitaireModelTest {
   MarbleSolitaireModel armThickness5EmptySlot4by4;
 
   @Before
-  public void setUp() throws Exception {
+  public void setUp() {
     noParams = new EuropeanSolitaireModel();
     sideLength5 = new EuropeanSolitaireModel(5);
     emptySlot0by4 = new EuropeanSolitaireModel(0, 4);
