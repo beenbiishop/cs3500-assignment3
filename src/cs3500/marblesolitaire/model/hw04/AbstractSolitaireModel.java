@@ -97,7 +97,7 @@ public abstract class AbstractSolitaireModel implements MarbleSolitaireModel {
    *
    * @see AbstractSolitaireModel#isValidSlot(int, int, int)
    */
-  protected boolean isValidSlot(int row, int col) {
+  private boolean isValidSlot(int row, int col) {
     return isValidSlot(row, col, this.armThickness);
   }
 

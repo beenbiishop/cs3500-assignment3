@@ -1,6 +1,7 @@
 package cs3500.marblesolitaire.view;
 
 import cs3500.marblesolitaire.model.hw02.MarbleSolitaireModelState;
+import cs3500.marblesolitaire.model.hw02.MarbleSolitaireModelState.SlotState;
 import java.io.IOException;
 
 public class AbstractSolitaireTextView implements MarbleSolitaireView {
@@ -55,8 +56,7 @@ public class AbstractSolitaireTextView implements MarbleSolitaireView {
           default:
             throw new IllegalArgumentException("Invalid slot state");
         }
-        if ((row < firstRowCol && col < lastRowCol) || (row > lastRowCol && col < lastRowCol) || (
-            row >= firstRowCol && row <= lastRowCol && col < (this.model.getBoardSize() - 1))) {
+        if (needsInnerSpace(row, col)) {
           state.append(" ");
         }
       }
@@ -65,6 +65,25 @@ public class AbstractSolitaireTextView implements MarbleSolitaireView {
       }
     }
     return state.toString();
+  }
+
+  /**
+   * Determines whether a space is needed after a slot in the text view.
+   *
+   * @param row the row of the current slot
+   * @param col the column of the current slot
+   * @return true if a space is needed after the current slot, false otherwise
+   */
+  private boolean needsInnerSpace(int row, int col) {
+    if (col < (this.model.getBoardSize() - 1) / 2) {
+      return true;
+    }
+    if (col + 2 <= this.model.getBoardSize()) {
+      SlotState slot = this.model.getSlotAt(row, col + 1);
+      return slot == SlotState.Marble || slot == SlotState.Empty;
+    } else {
+      return false;
+    }
   }
 
   @Override
