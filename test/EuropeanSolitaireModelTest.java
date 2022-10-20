@@ -1,5 +1,3 @@
-package cs3500.marblesolitaire.model.hw04;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
@@ -9,6 +7,9 @@ import static org.junit.Assert.fail;
 import cs3500.marblesolitaire.model.hw02.EnglishSolitaireModel;
 import cs3500.marblesolitaire.model.hw02.MarbleSolitaireModel;
 import cs3500.marblesolitaire.model.hw02.MarbleSolitaireModelState.SlotState;
+import cs3500.marblesolitaire.model.hw04.EuropeanSolitaireModel;
+import cs3500.marblesolitaire.view.MarbleSolitaireTextView;
+import cs3500.marblesolitaire.view.MarbleSolitaireView;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -268,6 +269,8 @@ public class EuropeanSolitaireModelTest {
     noParams.move(4, 5, 4, 3);
     noParams.move(4, 3, 2, 3);
     noParams.move(1, 3, 3, 3);
+    MarbleSolitaireView testView = new MarbleSolitaireTextView(noParams);
+    System.out.println(testView.toString());
     assertTrue(noParams.isGameOver());
   }
 }
