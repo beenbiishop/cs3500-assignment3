@@ -72,36 +72,36 @@ public final class MarbleSolitaire {
     // Check the arguments for the game type and initialize the model and view
     switch (args[0]) {
       case "english":
-        if (!userSize && userSlot) {
-          model = new EnglishSolitaireModel(sRow, sCol);
-        } else if (userSize && !userSlot) {
-          model = new EnglishSolitaireModel(size);
-        } else if (userSize && userSlot) {
+        if (userSize && userSlot) {
           model = new EnglishSolitaireModel(size, sRow, sCol);
+        } else if (userSize) {
+          model = new EnglishSolitaireModel(size);
+        } else if (userSlot) {
+          model = new EnglishSolitaireModel(sRow, sCol);
         } else {
           model = new EnglishSolitaireModel();
         }
         view = new MarbleSolitaireTextView(model);
         break;
       case "european":
-        if (!userSize && userSlot) {
-          model = new EuropeanSolitaireModel(sRow, sCol);
-        } else if (userSize && !userSlot) {
-          model = new EuropeanSolitaireModel(size);
-        } else if (userSize && userSlot) {
+        if (userSize && userSlot) {
           model = new EuropeanSolitaireModel(size, sRow, sCol);
+        } else if (userSize) {
+          model = new EuropeanSolitaireModel(size);
+        } else if (userSlot) {
+          model = new EuropeanSolitaireModel(sRow, sCol);
         } else {
           model = new EuropeanSolitaireModel();
         }
         view = new MarbleSolitaireTextView(model);
         break;
       case "triangular":
-        if (!userSize && userSlot) {
-          model = new TriangleSolitaireModel(sRow, sCol);
-        } else if (userSize && !userSlot) {
-          model = new TriangleSolitaireModel(size);
-        } else if (userSize && userSlot) {
+        if (userSize && userSlot) {
           model = new TriangleSolitaireModel(size, sRow, sCol);
+        } else if (userSize) {
+          model = new TriangleSolitaireModel(size);
+        } else if (userSlot) {
+          model = new TriangleSolitaireModel(sRow, sCol);
         } else {
           model = new TriangleSolitaireModel();
         }
