@@ -70,10 +70,10 @@ public class TriangleSolitaireModel extends AbstractSolitaireModel {
   @Override
   protected void checkParams(int armThickness, int sRow, int sCol) {
     if (armThickness < 1) {
-      throw new IllegalArgumentException("Arm thickness must be a positive number.");
+      throw new IllegalArgumentException("Arm thickness must be a positive number");
     }
     if (!isValidSlot(sRow, sCol, armThickness)) {
-      throw new IllegalArgumentException("Invalid empty cell position (" + sRow + "," + sCol + ")");
+      throw new IllegalArgumentException("Invalid empty cell position (" + sRow + ", " + sCol + ")");
     }
   }
 
