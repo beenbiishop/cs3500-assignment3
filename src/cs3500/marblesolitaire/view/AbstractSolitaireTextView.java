@@ -4,6 +4,9 @@ import cs3500.marblesolitaire.model.hw02.MarbleSolitaireModelState;
 import cs3500.marblesolitaire.model.hw02.MarbleSolitaireModelState.SlotState;
 import java.io.IOException;
 
+/**
+ * Represents an abstract class for a text-based view of a Marble Solitaire game.
+ */
 public class AbstractSolitaireTextView implements MarbleSolitaireView {
 
   protected final MarbleSolitaireModelState model;

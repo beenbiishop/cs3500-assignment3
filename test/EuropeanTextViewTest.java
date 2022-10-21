@@ -7,6 +7,9 @@ import cs3500.marblesolitaire.view.MarbleSolitaireView;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Represents tests for the MarbleSolitaireModel class with a European board.
+ */
 public class EuropeanTextViewTest {
 
   MarbleSolitaireModel noParams;
