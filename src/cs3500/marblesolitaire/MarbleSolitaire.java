@@ -17,7 +17,17 @@ import java.io.InputStreamReader;
 public final class MarbleSolitaire {
 
   /**
-   * Initializes a new playable game for the user.
+   * Initiates a new game instance for the user.
+   *
+   * <p>Three arguments are available for the user to specify the game configuration:
+   * <ul>
+   *   <li>"english", "european", or "triangular" – specifies the game board to use (required)</li>
+   *   <li>"-size N" – specifies the side length of the board (optional)</li>
+   *   <li>"-hole N N" – specifies the starting empty slot on the board (optional)</li>
+   * </ul>
+   * These arguments are then used to create a new game board and controller, and then the game is
+   * played and displayed to the user.
+   * </p>
    *
    * @param args the arguments taken in by the main method
    */
