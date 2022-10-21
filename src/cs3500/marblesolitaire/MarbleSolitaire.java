@@ -22,12 +22,17 @@ public final class MarbleSolitaire {
    * @param args the arguments taken in by the main method
    */
   public static void main(String[] args) {
+    // Set the input stream
     Readable input = new InputStreamReader(System.in);
+
+    // Initialize the parameter variables
     int size = 0;
     int sRow = 0;
     int sCol = 0;
     boolean userSize = false;
-    boolean userSPosn = false;
+    boolean userSlot = false;
+
+    // Check the arguments for the size and slot
     for (int i = 0; i < args.length; i++) {
       if (args[i].equals("-size")) {
         if (i + 1 < args.length) {
@@ -48,7 +53,7 @@ public final class MarbleSolitaire {
           try {
             sRow = Integer.parseInt(args[i + 1]);
             sCol = Integer.parseInt(args[i + 2]);
-            userSPosn = true;
+            userSlot = true;
           } catch (NumberFormatException e) {
             System.out.println("Invalid hole. Hole must be two integers.");
             return;
@@ -59,46 +64,55 @@ public final class MarbleSolitaire {
         }
       }
     }
+
+    // Initialize the model and view variables
     MarbleSolitaireModel model;
     MarbleSolitaireView view;
+
+    // Check the arguments for the game type
     switch (args[0]) {
       case "english":
-        if (!userSize) {
-          size = 3;
+        if (!userSize && userSlot) {
+          model = new EnglishSolitaireModel(sRow, sCol);
+        } else if (userSize && !userSlot) {
+          model = new EnglishSolitaireModel(size);
+        } else if (userSize && userSlot) {
+          model = new EnglishSolitaireModel(size, sRow, sCol);
+        } else {
+          model = new EnglishSolitaireModel();
         }
-        if (!userSPosn) {
-          sRow = 3;
-          sCol = 3;
-        }
-        model = new EnglishSolitaireModel(size, sRow, sCol);
         view = new MarbleSolitaireTextView(model);
         break;
       case "european":
-        if (!userSize) {
-          size = 3;
+        if (!userSize && userSlot) {
+          model = new EuropeanSolitaireModel(sRow, sCol);
+        } else if (userSize && !userSlot) {
+          model = new EuropeanSolitaireModel(size);
+        } else if (userSize && userSlot) {
+          model = new EuropeanSolitaireModel(size, sRow, sCol);
+        } else {
+          model = new EuropeanSolitaireModel();
         }
-        if (!userSPosn) {
-          sRow = 3;
-          sCol = 3;
-        }
-        model = new EuropeanSolitaireModel(size, sRow, sCol);
         view = new MarbleSolitaireTextView(model);
         break;
       case "triangular":
-        if (!userSize) {
-          size = 5;
+        if (!userSize && userSlot) {
+          model = new TriangleSolitaireModel(sRow, sCol);
+        } else if (userSize && !userSlot) {
+          model = new TriangleSolitaireModel(size);
+        } else if (userSize && userSlot) {
+          model = new TriangleSolitaireModel(size, sRow, sCol);
+        } else {
+          model = new TriangleSolitaireModel();
         }
-        if (!userSPosn) {
-          sRow = 0;
-          sCol = 0;
-        }
-        model = new TriangleSolitaireModel(size, sRow, sCol);
         view = new TriangleSolitaireTextView(model);
         break;
       default:
         System.out.println("Invalid game type");
         return;
     }
+
+    // Initialize the controller and play the game
     MarbleSolitaireController controller = new MarbleSolitaireControllerImpl(model, view, input);
     controller.playGame();
   }
