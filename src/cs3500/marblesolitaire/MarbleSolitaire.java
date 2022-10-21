@@ -69,7 +69,7 @@ public final class MarbleSolitaire {
     MarbleSolitaireModel model;
     MarbleSolitaireView view;
 
-    // Check the arguments for the game type
+    // Check the arguments for the game type and initialize the model and view
     switch (args[0]) {
       case "english":
         if (!userSize && userSlot) {
