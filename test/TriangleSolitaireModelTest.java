@@ -1,5 +1,7 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import cs3500.marblesolitaire.model.hw02.MarbleSolitaireModel;
@@ -197,6 +199,47 @@ public class TriangleSolitaireModelTest {
     } catch (IllegalArgumentException error) {
       assertEquals("Invalid move from (3, 3) to (3, 1)", error.getMessage());
     }
+  }
+
+  @Test
+  public void testIsGameOver() {
+    assertFalse(noParams.isGameOver());
+    assertFalse(dimension7EmptySlot3by3.isGameOver());
+    assertTrue(new TriangleSolitaireModel(1).isGameOver());
+
+//    noParams.move(3, 1, 3, 3);
+//    noParams.move(5, 2, 3, 2);
+//    noParams.move(4, 0, 4, 2);
+//    noParams.move(4, 3, 4, 1);
+//    noParams.move(4, 5, 4, 3);
+//    noParams.move(6, 4, 4, 4);
+//    noParams.move(3, 4, 5, 4);
+//    noParams.move(6, 2, 6, 4);
+//    noParams.move(6, 4, 4, 4);
+//    noParams.move(2, 2, 4, 2);
+//    noParams.move(0, 2, 2, 2);
+//    noParams.move(1, 4, 3, 4);
+//    noParams.move(3, 4, 5, 4);
+//    noParams.move(5, 4, 5, 2);
+//    noParams.move(5, 2, 3, 2);
+//    noParams.move(3, 2, 1, 2);
+//    noParams.move(2, 0, 4, 0);
+//    noParams.move(4, 0, 4, 2);
+//    noParams.move(4, 2, 4, 4);
+//    noParams.move(2, 6, 2, 4);
+//    noParams.move(2, 3, 2, 5);
+//    noParams.move(4, 6, 2, 6);
+//    noParams.move(2, 6, 2, 4);
+//    noParams.move(0, 4, 0, 2);
+//    noParams.move(0, 2, 2, 2);
+//    noParams.move(2, 1, 2, 3);
+//    noParams.move(2, 3, 2, 5);
+//    noParams.move(2, 5, 4, 5);
+//    noParams.move(4, 5, 4, 3);
+//    noParams.move(4, 3, 2, 3);
+//    noParams.move(1, 3, 3, 3);
+//    // TODO: fix to ensure that the game is over
+//    assertTrue(noParams.isGameOver());
   }
 
 }
