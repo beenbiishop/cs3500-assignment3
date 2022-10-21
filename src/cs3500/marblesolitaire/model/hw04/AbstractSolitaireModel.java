@@ -4,30 +4,13 @@ import cs3500.marblesolitaire.model.hw02.MarbleSolitaireModel;
 
 /**
  * Represents the abstract class for a marble solitaire model.
- *
- * <p>The class will instantiate the game/board based on three given parameters:
- * <ol>
- *   <li>The arm thickness</li>
- *    <li>The empty slot row</li>
- *    <li>The empty slot column</li>
- *  </ol>
- *  The user must either specify all three parameters. The class will then initialize a new board
- *  with the given parameters, and return an exception error if any of the parameters are invalid.
- *  </p>
- *  <p>
- *    After initialization, the class will then handle the logic of any moves made by the user. The
- *    user can move a marble by specifying a starting and ending position. The user can also get
- *    the size of the board, get the state of a slot on the board, get the current score of the
- *    game, and check if the game is over. Though the user will never directly interact with this
- *    class, it will be used by the controller to handle the logic of the game.
- *  </p>
  */
 public abstract class AbstractSolitaireModel implements MarbleSolitaireModel {
 
-  private final int armThickness;
-  private final int sRow;
-  private final int sCol;
-  private final SlotState[][] board;
+  protected final int armThickness;
+  protected final int sRow;
+  protected final int sCol;
+  protected final SlotState[][] board;
 
   /**
    * Constructs a new model with the specified arm thickness and the empty slot at the specified row
@@ -97,7 +80,7 @@ public abstract class AbstractSolitaireModel implements MarbleSolitaireModel {
    *
    * @see AbstractSolitaireModel#isValidSlot(int, int, int)
    */
-  private boolean isValidSlot(int row, int col) {
+  protected boolean isValidSlot(int row, int col) {
     return isValidSlot(row, col, this.armThickness);
   }
 
@@ -166,13 +149,13 @@ public abstract class AbstractSolitaireModel implements MarbleSolitaireModel {
    * @param toCol   the column number of the slot to move to (starts at 0)
    * @return true if the given move is valid, false otherwise
    */
-  private boolean isValidMove(int fromRow, int fromCol, int toRow, int toCol) {
+  protected boolean isValidMove(int fromRow, int fromCol, int toRow, int toCol) {
     int horDiff = Math.abs(fromRow - toRow);
     int verDiff = Math.abs(fromCol - toCol);
     int midRow = (fromRow + toRow) / 2;
     int midCol = (fromCol + toCol) / 2;
-    return this.isValidSlot(fromRow, fromCol) && this.isValidSlot(toRow, toCol)
-        && this.isValidSlot(midRow, midCol) && this.getSlotAt(fromRow, fromCol) == SlotState.Marble
+    return this.isValidSlot(fromRow, fromCol) && this.isValidSlot(toRow, toCol) && this.isValidSlot(
+        midRow, midCol) && this.getSlotAt(fromRow, fromCol) == SlotState.Marble
         && this.getSlotAt(toRow, toCol) == SlotState.Empty && ((horDiff == 2 && verDiff == 0) ^ (
         horDiff == 0 && verDiff == 2)) && this.getSlotAt(midRow, midCol) == SlotState.Marble;
   }

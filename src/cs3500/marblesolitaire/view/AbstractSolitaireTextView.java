@@ -6,8 +6,8 @@ import java.io.IOException;
 
 public class AbstractSolitaireTextView implements MarbleSolitaireView {
 
-  private final MarbleSolitaireModelState model;
-  private final Appendable appendable;
+  protected final MarbleSolitaireModelState model;
+  protected final Appendable appendable;
 
   /**
    * Constructs a new text view of the given model with a given appendable.
@@ -74,7 +74,7 @@ public class AbstractSolitaireTextView implements MarbleSolitaireView {
    * @param col the column of the current slot
    * @return true if a space is needed after the current slot, false otherwise
    */
-  private boolean needsInnerSpace(int row, int col) {
+  protected boolean needsInnerSpace(int row, int col) {
     if (col < (this.model.getBoardSize() - 1) / 2) {
       return true;
     }

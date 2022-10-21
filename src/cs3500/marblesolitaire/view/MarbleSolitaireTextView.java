@@ -28,8 +28,9 @@ public class MarbleSolitaireTextView extends AbstractSolitaireTextView {
    * Constructs a new text view of the given model.
    *
    * @param model the model object to be represented
+   * @throws IllegalArgumentException if the model is null
    */
-  public MarbleSolitaireTextView(MarbleSolitaireModelState model) {
+  public MarbleSolitaireTextView(MarbleSolitaireModelState model) throws IllegalArgumentException {
     super(model);
   }
 

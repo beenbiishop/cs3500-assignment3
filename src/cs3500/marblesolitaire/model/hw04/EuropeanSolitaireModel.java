@@ -5,11 +5,11 @@ package cs3500.marblesolitaire.model.hw04;
  *
  * <p>The class will instantiate the game/board based on three given parameters:
  * <ol>
- *   <li>The arm thickness</li>
+ *   <li>The side length</li>
  *   <li>The empty slot row</li>
  *   <li>The empty slot column</li>
  * </ol>
- * The user must either specify no parameters, just the arm thickness, just the empty slot
+ * The user must either specify no parameters, just the side length, just the empty slot
  * position, or all three. The class will then initialize a new board with the given parameters,
  * and return an exception error if any of the parameters are invalid.
  * </p>
@@ -24,14 +24,14 @@ package cs3500.marblesolitaire.model.hw04;
 public class EuropeanSolitaireModel extends AbstractSolitaireModel {
 
   /**
-   * Constructs a new model with the default arm thickness of 3 and the empty slot in the center.
+   * Constructs a new model with the default side length of 3 and the empty slot in the center.
    */
   public EuropeanSolitaireModel() {
     super(3, 3, 3);
   }
 
   /**
-   * Constructs a new model with an adjustable arm thickness and the empty slot in the center.
+   * Constructs a new model with an adjustable side length and the empty slot in the center.
    *
    * @param sideLength the side length of the board
    * @throws IllegalArgumentException if the side length is not a positive odd number
@@ -41,7 +41,7 @@ public class EuropeanSolitaireModel extends AbstractSolitaireModel {
   }
 
   /**
-   * Constructs a new model with the default arm thickness of 3 and the empty slot at the specified
+   * Constructs a new model with the default side length of 3 and the empty slot at the specified
    * row and column.
    *
    * @param sRow the row of the starting empty slot
@@ -53,7 +53,7 @@ public class EuropeanSolitaireModel extends AbstractSolitaireModel {
   }
 
   /**
-   * Constructs a new model with the specified arm thickness and the empty slot at the specified row
+   * Constructs a new model with the specified side length and the empty slot at the specified row
    * and column.
    *
    * @param sideLength the side length of the board
@@ -67,7 +67,7 @@ public class EuropeanSolitaireModel extends AbstractSolitaireModel {
   }
 
   /**
-   * Returns whether the given slot position is valid based on the given arm thickness.
+   * Returns whether the given slot position is valid based on the given side length.
    *
    * @param row        the row of the slot to validate
    * @param col        the column of the slot to validate
