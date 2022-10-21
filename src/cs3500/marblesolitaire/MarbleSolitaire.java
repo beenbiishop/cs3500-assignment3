@@ -19,7 +19,7 @@ public final class MarbleSolitaire {
    * @param args the arguments taken in by the main method
    */
   public static void main(String[] args) {
-    MarbleSolitaireModel model = new TriangleSolitaireModel(7, 3, 3);
+    MarbleSolitaireModel model = new TriangleSolitaireModel(20);
     MarbleSolitaireView view = new TriangleSolitaireTextView(model);
     Readable input = new InputStreamReader(System.in);
     MarbleSolitaireController controller = new MarbleSolitaireControllerImpl(model, view, input);
