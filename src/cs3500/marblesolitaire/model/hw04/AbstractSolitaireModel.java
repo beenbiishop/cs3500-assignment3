@@ -24,6 +24,20 @@ public abstract class AbstractSolitaireModel implements MarbleSolitaireModel {
    */
   public AbstractSolitaireModel(int armThickness, int sRow, int sCol)
       throws IllegalArgumentException {
+    checkParams(armThickness, sRow, sCol);
+    this.armThickness = armThickness;
+    this.sRow = sRow;
+    this.sCol = sCol;
+    this.board = new SlotState[this.getBoardSize()][this.getBoardSize()];
+    this.initializeBoard();
+  }
+
+  /**
+   * Checks if this board's input parameters are valid.
+   *
+   * @throws IllegalArgumentException if the given board parameters are invalid
+   */
+  protected void checkParams(int armThickness, int sRow, int sCol) throws IllegalArgumentException {
     if (armThickness % 2 == 0 || armThickness < 1) {
       throw new IllegalArgumentException("Arm thickness must be a positive odd number");
     }
@@ -31,11 +45,6 @@ public abstract class AbstractSolitaireModel implements MarbleSolitaireModel {
       throw new IllegalArgumentException(
           "Invalid empty cell position (" + sRow + ", " + sCol + ")");
     }
-    this.armThickness = armThickness;
-    this.sRow = sRow;
-    this.sCol = sCol;
-    this.board = new SlotState[this.getBoardSize()][this.getBoardSize()];
-    this.initializeBoard();
   }
 
   /**
