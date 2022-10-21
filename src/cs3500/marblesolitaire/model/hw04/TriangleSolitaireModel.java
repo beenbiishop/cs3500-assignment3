@@ -47,7 +47,7 @@ public class TriangleSolitaireModel extends AbstractSolitaireModel {
    * Constructs a new model with the specified bottom row dimension and the empty slot at (0, 0).
    *
    * @param dimension the bottom row dimension of the board
-   * @throws IllegalArgumentException if the bottom row dimension is not a positive odd number
+   * @throws IllegalArgumentException if the bottom row dimension is not a positive number
    */
   public TriangleSolitaireModel(int dimension) throws IllegalArgumentException {
     super(dimension, 0, 0);
@@ -60,11 +60,21 @@ public class TriangleSolitaireModel extends AbstractSolitaireModel {
    * @param dimension the bottom row dimension of the board
    * @param sRow      the row of the starting empty slot
    * @param sCol      the column of the starting empty slot
-   * @throws IllegalArgumentException if the bottom row dimension is not a positive odd number or
-   *                                  the empty slot position is invalid
+   * @throws IllegalArgumentException if the bottom row dimension is not a positive number or the
+   *                                  empty slot position is invalid
    */
   public TriangleSolitaireModel(int dimension, int sRow, int sCol) throws IllegalArgumentException {
     super(dimension, sRow, sCol);
+  }
+
+  @Override
+  protected void checkParams(int armThickness, int sRow, int sCol) {
+    if (armThickness < 1) {
+      throw new IllegalArgumentException("Arm thickness must be a positive number");
+    }
+    if (!isValidSlot(sRow, sCol, armThickness)) {
+      throw new IllegalArgumentException("Invalid empty cell position (" + sRow + ", " + sCol + ")");
+    }
   }
 
   @Override
